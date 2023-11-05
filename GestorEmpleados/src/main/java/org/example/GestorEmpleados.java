@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class GestorEmpleados {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         //Instancian controladora de persistencia
         ControladoraPersistencia cp = new ControladoraPersistencia();
 
@@ -39,20 +39,25 @@ public class GestorEmpleados {
                     System.out.println("Seleccionado buscar empleados por su cargo"+ '\n'
                             + "Por favor escriba el cargo");
                     cargo = sc.next();
-                    //mostrarEmpleados(listarPorCargo(cp, cargo));
+                    mostrarEmpleados(listarPorCargo(cp, cargo));
                 }
                 case 3 ->  {
                     System.out.println("Seleccionado añadir un nuevo empleado");
-                    aniadir(cp, crear(sc));
+                    aniadir(cp, crear(sc,0));
 
                     //System.out.println(crear(sc));
 
                 }
                 case 4 ->  {
                     System.out.println("Seleccionado acutalizar la informacion de un empleado");
+                    acutalizar(cp , crear(sc,1));
+                    System.out.println("Empleado actualizado");
                 }
                 case 5 ->  {
-                    System.out.println("Selecionado borrar a un empleado");
+                    System.out.println("Selecionado borrar a un empleado"+'\n' +
+                            "Por favor escriba el id del empleado que desea borrar");
+                    borrar(cp, sc.nextInt());
+                    System.out.println("Empleado borrado con exito");
                 }
                 case 0 ->  {
                     System.out.println("Seleccionado salir y finalizar el programa");
@@ -102,8 +107,13 @@ public class GestorEmpleados {
         cp.borrarEmpleado(id);
     }
 
-    public static Empleado crear(Scanner sc){
+    public static Empleado crear(Scanner sc, int tipoLlamada){
         Empleado empleado = new Empleado();
+
+        if (tipoLlamada==1){
+            System.out.println("Id del empleado que desea actualizar");
+            empleado.setId(sc.nextInt());
+        }
 
         System.out.println("Nombre del empleado");
         empleado.setNombre(sc.next());

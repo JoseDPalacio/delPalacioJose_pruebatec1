@@ -1,7 +1,6 @@
 package org.example.logica;
 
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -105,7 +104,12 @@ public class Empleado implements Serializable {
     //metodo para mostrar por un print
     @Override
     public String toString() {
-        return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", cargo=" + cargo + ", salario=" + salario + ", fechaInicio=" + fechaInicio + '}';
+        return "Empleado" + " id: " + id + '\n' +
+                "nombre: " + nombre + '\n' +
+                "apellido: " + apellido + '\n' +
+                "cargo: " + cargo + '\n' +
+                "salario: " + salario + '\n' +
+                "fechaInicio: " + fechaInicio;
     }
 
 

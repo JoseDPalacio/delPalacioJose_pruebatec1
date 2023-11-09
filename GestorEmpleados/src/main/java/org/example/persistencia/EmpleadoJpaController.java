@@ -8,7 +8,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import java.util.List;
 
 public class EmpleadoJpaController {
@@ -21,7 +20,6 @@ public class EmpleadoJpaController {
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-
 
     //Insert
     public void create(Empleado empleado) {
@@ -89,10 +87,6 @@ public class EmpleadoJpaController {
         return findEmpleadoEntities(true, -1, -1);
     }
 
-    public List<Empleado> findEmpleadoEntities(int maxResults, int firstResult) {
-        return findEmpleadoEntities(false, maxResults, firstResult);
-    }
-
     private List<Empleado> findEmpleadoEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
@@ -118,16 +112,5 @@ public class EmpleadoJpaController {
         }
     }
 
-    public int getEmpleadoCount() {
-        EntityManager em = getEntityManager();
-        try {
-            CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Empleado> rt = cq.from(Empleado.class);
-            cq.select(em.getCriteriaBuilder().count(rt));
-            Query q = em.createQuery(cq);
-            return ((Long) q.getSingleResult()).intValue();
-        } finally {
-            em.close();
-        }
-    }
 }
+

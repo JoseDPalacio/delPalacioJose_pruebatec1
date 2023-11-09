@@ -1,5 +1,7 @@
 package org.example.logica;
 
+import org.example.exceptions.EmpleadoException;
+
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,40 +34,25 @@ public class Empleado implements Serializable {
     public Empleado() {
     }
 
-    //Uso para crear empleado para el insert
-    public Empleado(String nombre, String apellido, String cargo, int salario, String fechaInicio) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.cargo = cargo;
-        this.salario = salario;
-        this.fechaInicio = fechaInicio;
-    }
-
-    //Uso para crear un empleado para el update
-    public Empleado(int id, String nombre, String apellido, String cargo, int salario, String fechaInicio) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.cargo = cargo;
-        this.salario = salario;
-        this.fechaInicio = fechaInicio;
-    }
-
-
     //Getter & Setter
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int id) throws EmpleadoException {
+        if (id == 0) {
+            throw new EmpleadoException("El id no puede ser 0");
+        } else this.id = id;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public void setNombre(String nombre) throws EmpleadoException {
+        if (nombre.isEmpty()){
+            throw new EmpleadoException("El nombre no puede estar vacio");
+        }
         this.nombre = nombre;
     }
 
@@ -73,7 +60,10 @@ public class Empleado implements Serializable {
         return apellido;
     }
 
-    public void setApellido(String apellido) {
+    public void setApellido(String apellido) throws EmpleadoException {
+        if (apellido.isEmpty()){
+            throw new EmpleadoException("El apellido no puede estar vacio");
+        }
         this.apellido = apellido;
     }
 
@@ -81,7 +71,10 @@ public class Empleado implements Serializable {
         return cargo;
     }
 
-    public void setCargo(String cargo) {
+    public void setCargo(String cargo) throws EmpleadoException {
+        if (cargo.isEmpty()){
+            throw new EmpleadoException("El cargo no puede estar vacio");
+        }
         this.cargo = cargo;
     }
 
@@ -89,7 +82,10 @@ public class Empleado implements Serializable {
         return salario;
     }
 
-    public void setSalario(int salario) {
+    public void setSalario(int salario) throws EmpleadoException {
+        if (salario==0){
+            throw new EmpleadoException("El salario no puede ser 0");
+        }
         this.salario = salario;
     }
 
@@ -97,7 +93,10 @@ public class Empleado implements Serializable {
         return fechaInicio;
     }
 
-    public void setFechaInicio(String fechaInicio) {
+    public void setFechaInicio(String fechaInicio) throws EmpleadoException {
+        if (fechaInicio.isEmpty()){
+            throw new EmpleadoException("La fecha no puede estar vacio");
+        }
         this.fechaInicio = fechaInicio;
     }
 
@@ -111,6 +110,4 @@ public class Empleado implements Serializable {
                 "salario: " + salario + '\n' +
                 "fechaInicio: " + fechaInicio;
     }
-
-
 }

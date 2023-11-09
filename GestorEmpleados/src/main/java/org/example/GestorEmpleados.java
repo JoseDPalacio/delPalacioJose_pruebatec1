@@ -55,7 +55,7 @@ public class GestorEmpleados {
                             aniadir(crear(0));
                         } catch (EmpleadoException ex) {
                             System.err.println("Error!! " + ex.getMessage());
-                            sc.nextLine();
+                            sc.reset();
                         }
 
                     }
@@ -66,7 +66,7 @@ public class GestorEmpleados {
                             System.out.println("Empleado actualizado");
                         } catch (EmpleadoException ex) {
                             System.err.println("Error!! " + ex.getMessage());
-                            sc.nextLine();
+                            sc.reset();
                         }
                     }
                     case 5 -> {

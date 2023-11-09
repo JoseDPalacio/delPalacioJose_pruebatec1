@@ -71,7 +71,7 @@ public class EmpleadoJpaController {
                 empleado = em.getReference(Empleado.class, id);
                 empleado.getId();
             } catch (Exception enfe) {
-                throw new NonexistentEntityException("The empleado with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("El empleado con " + id + " no existe", enfe);
             }
             em.remove(empleado);
             em.getTransaction().commit();

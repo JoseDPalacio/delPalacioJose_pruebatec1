@@ -72,8 +72,12 @@ public class GestorEmpleados {
                     case 5 -> {
                         System.out.println("Selecionado: borrar a un empleado" + '\n' +
                                 "Por favor escriba el id del empleado que desea borrar");
+                        try{
                         borrar(sc.nextInt());
                         System.out.println("Empleado borrado con exito");
+                        }catch (NonexistentEntityException neee){
+                            System.err.println("Error: "+neee.getMessage());
+                        }
                     }
                     case 0 -> System.out.println("Seleccionado: Salir y finalizar el programa");
                     default -> System.out.println("Opcion no valida, por favor escoga una opcion valida");

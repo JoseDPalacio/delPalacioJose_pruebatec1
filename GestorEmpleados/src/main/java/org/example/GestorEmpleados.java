@@ -34,11 +34,11 @@ public class GestorEmpleados {
                 opcion = sc.nextInt();
                 switch (opcion) {
                     case 1 -> {
-                        System.out.println("Seleccionado listar todos los empleados");
+                        System.out.println("Seleccionado: Listar todos los empleados");
                         mostrarEmpleados(listar());
                     }
                     case 2 -> {
-                        System.out.println("Seleccionado buscar empleados por su cargo" + '\n'
+                        System.out.println("Seleccionado: Buscar empleados por su cargo" + '\n'
                                 + "Por favor escriba el cargo");
                         sc.nextLine();
                         cargo = sc.nextLine();
@@ -50,50 +50,44 @@ public class GestorEmpleados {
                         mostrarEmpleados(listarPorCargo(cargo));
                     }
                     case 3 -> {
-                        System.out.println("Seleccionado añadir un nuevo empleado");
+                        System.out.println("Seleccionado: Añadir un nuevo empleado");
                         try {
                             aniadir(crear(0));
                         } catch (EmpleadoException ex) {
                             System.err.println("Error!! " + ex.getMessage());
                             sc.nextLine();
-                        } catch (InputMismatchException ime) {
-                            System.err.println("Error de tipo de dato que desea guardar");
-                            sc.nextLine();
                         }
 
                     }
                     case 4 -> {
-                        System.out.println("Seleccionado acutalizar la informacion de un empleado");
+                        System.out.println("Seleccionado: Acutalizar la informacion de un empleado");
                         try {
                             acutalizar(crear(1));
                             System.out.println("Empleado actualizado");
                         } catch (EmpleadoException ex) {
                             System.err.println("Error!! " + ex.getMessage());
                             sc.nextLine();
-                        } catch (InputMismatchException ime) {
-                            System.err.println("Error de tipo de dato que desea guardar");
-                            sc.nextLine();
                         }
                     }
                     case 5 -> {
-                        System.out.println("Selecionado borrar a un empleado" + '\n' +
+                        System.out.println("Selecionado: borrar a un empleado" + '\n' +
                                 "Por favor escriba el id del empleado que desea borrar");
                         borrar(sc.nextInt());
                         System.out.println("Empleado borrado con exito");
                     }
-                    case 0 -> System.out.println("Seleccionado salir y finalizar el programa");
+                    case 0 -> System.out.println("Seleccionado: Salir y finalizar el programa");
                     default -> System.out.println("Opcion no valida, por favor escoga una opcion valida");
                 }
             } catch (InputMismatchException ime) {
-                System.err.println("Error de tipo de dato que desea guardar");
+                System.err.println("Error de tipo de dato ingresado");
                 sc.nextLine();
-                opcion=-1;
+                opcion = -1;
             }
 
-    } while(opcion !=0);
+        } while (opcion != 0);
 
         System.out.println("Programa finalizado, que tenga un buen dia");
-}
+    }
 
     //metodos
     public static void mostrarEmpleados(List<Empleado> empleados) {
@@ -160,7 +154,7 @@ public class GestorEmpleados {
         System.out.println("Salario del empleado");
         empleado.setSalario(sc.nextInt());
 
-        System.out.println("Fecha de inicio del empleado");
+        System.out.println("Fecha de inicio del empleado(DD/MM/YYYY)");
         sc.nextLine();
         empleado.setFechaInicio(sc.nextLine());
 

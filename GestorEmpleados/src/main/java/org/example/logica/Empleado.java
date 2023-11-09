@@ -50,10 +50,10 @@ public class Empleado implements Serializable {
     }
 
     public void setNombre(String nombre) throws EmpleadoException {
-        if (nombre.isEmpty()){
+        if (nombre.isEmpty()) {
             throw new EmpleadoException("El nombre no puede estar vacio");
-        }
-        this.nombre = nombre;
+        } else this.nombre = nombre;
+
     }
 
     public String getApellido() {
@@ -61,10 +61,9 @@ public class Empleado implements Serializable {
     }
 
     public void setApellido(String apellido) throws EmpleadoException {
-        if (apellido.isEmpty()){
+        if (apellido.isEmpty()) {
             throw new EmpleadoException("El apellido no puede estar vacio");
-        }
-        this.apellido = apellido;
+        } else this.apellido = apellido;
     }
 
     public String getCargo() {
@@ -72,10 +71,9 @@ public class Empleado implements Serializable {
     }
 
     public void setCargo(String cargo) throws EmpleadoException {
-        if (cargo.isEmpty()){
+        if (cargo.isEmpty()) {
             throw new EmpleadoException("El cargo no puede estar vacio");
-        }
-        this.cargo = cargo;
+        } else this.cargo = cargo;
     }
 
     public int getSalario() {
@@ -83,10 +81,9 @@ public class Empleado implements Serializable {
     }
 
     public void setSalario(int salario) throws EmpleadoException {
-        if (salario==0){
+        if (salario == 0) {
             throw new EmpleadoException("El salario no puede ser 0");
-        }
-        this.salario = salario;
+        } else this.salario = salario;
     }
 
     public String getFechaInicio() {
@@ -94,10 +91,9 @@ public class Empleado implements Serializable {
     }
 
     public void setFechaInicio(String fechaInicio) throws EmpleadoException {
-        if (fechaInicio.isEmpty()){
+        if (fechaInicio.isEmpty()) {
             throw new EmpleadoException("La fecha no puede estar vacio");
-        }
-        this.fechaInicio = fechaInicio;
+        } else this.fechaInicio = fechaInicio;
     }
 
     //metodo para mostrar por un print
